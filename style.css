@@ -7,8 +7,8 @@
     height: 400px;
     display: grid;
     grid-template-columns: repeat (4, 1fr);
-    grid-gap: 2px;
-    padding: 2px;
+    /* grid-gap: 2px; */
+    padding: 1px;
     background-color: black;
 }
 p {
@@ -20,7 +20,7 @@ p {
     grid-row: 1;
     color: green;
     background-color: white;
-    /* border: 1px dotted red; */
+    border: 1px solid black;
 }
 
 #clear {
@@ -58,7 +58,10 @@ p {
     grid-column: 4;
 }
 
-.button:hover {
+.button {
+    border: 1px solid black;
+    color: black;
+}.button:hover {
     border: 1px solid white;
     color: white;
 }

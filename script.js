@@ -1,3 +1,53 @@
+// Initalise variables
+let input = '';
+let output = '';
+let calculator = document.querySelector('#calculator')
+let displayOutput = document.querySelector('#display-output');
+let displayIntput = document.querySelector('#display-input')
+
+// Initalise display
+const updateDisp = () => {
+    displayIntput.textContent = input;
+    displayOutput.textContent = output;
+}
+const clearDisp = () => {
+    input = '';
+    output = '';
+    updateDisp()
+}
+updateDisp()
+
+/*-----Calculator display changes-----*/
+calculator.addEventListener('click',(e) => {
+    // find which button has been pressed
+    let btnName = e.target.getAttribute('id') || e.target.parentElement.getAttribute('id')
+
+    if (btnName == 'clear') { clearDisp(); }
+    else if (btnName == 'equals') { output = parsePlusSeparExpr(input); }
+
+    // number buttons
+    else if (btnName == 'decimal') { input += '.'; }
+    if (btnName == 'zero') { input += '0'; }
+    if (btnName == 'one') { input += '1'; }
+    if (btnName == 'two') { input += '2'; }
+    if (btnName == 'three') { input += '3'; }
+    if (btnName == 'four') { input += '4'; }
+    if (btnName == 'five') { input += '5'; }
+    if (btnName == 'six') { input += '6'; }
+    if (btnName == 'seven') { input += '7'; }
+    if (btnName == 'eight') { input += '8'; }
+    if (btnName == 'nine') { input += '9'; }
+    // operator buttons
+    if (btnName == 'divide') { input += '/'; }
+    if (btnName == 'multiply') { input += '*'; }
+    if (btnName == 'add') { input += '+'; }
+    if (btnName == 'subtract') { input += '-'; }
+
+    console.log('btn ID is', btnName)
+    updateDisp()
+})
+
+/*-----Calculator Logic-----*/
 // parse * / - +
 const parsePlusSeparExpr = (expression) => {
     // convert string to array of no.s

@@ -15,12 +15,26 @@ p {
     text-align: center;
 }
 
-#display-container {
+#display {
     grid-column: 1/5;
     grid-row: 1;
     color: green;
-    background-color: white;
+    background-color: black;
     border: 1px solid black;
+}
+#display h2, h3 {
+    text-align: right;
+    color: white;
+    padding: 0.5rem;
+    padding-right: 1em;
+}
+
+.button {
+    border: 1px solid black;
+}
+.button:hover {
+    border: 1px solid white;
+    color: white;
 }
 
 #clear {
@@ -58,10 +72,3 @@ p {
     grid-column: 4;
 }
 
-.button {
-    border: 1px solid black;
-    color: black;
-}.button:hover {
-    border: 1px solid white;
-    color: white;
-}

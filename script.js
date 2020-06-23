@@ -42,8 +42,11 @@ calculator.addEventListener('click',(e) => {
     if (btnName == 'multiply') { input += '*'; }
     if (btnName == 'add') { input += '+'; }
     if (btnName == 'subtract') { input += '-'; }
+    // brackets
+    if (btnName == 'open-bracket') { input += '('; }
+    if (btnName == 'close-bracket') { input += ')'; }
 
-    console.log('btn ID is', btnName)
+    // console.log('btn ID is', btnName)
     updateDisp()
 })
 

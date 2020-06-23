@@ -50,11 +50,11 @@ p {
     background-color: dodgerblue;
 }
 .number {
-    background-color: lightslategray;
+    background-color: darkgray;
     /* border: 1px dotted red; */
 }
 .math-oprator{ 
-    background-color: darkgrey;
+    background-color: lightslategrey;
     /* border: 1px dotted red; */
 }
 #multiply {
@@ -70,6 +70,6 @@ p {
     grid-column: 4;
 }
 .bracket {
-    background-color: grey;
+    background-color: rgb(122, 131, 139);
 }
 

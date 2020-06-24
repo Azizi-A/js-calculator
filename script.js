@@ -29,7 +29,9 @@ calculator.addEventListener('click',(e) => {
     }
 
     // number buttons
-    else if (btnName == 'decimal') { output += '.'; }
+    else if (btnName == 'decimal') {
+        if (!output.includes('.')) { output += '.'; }
+    }
     else if (btnName == 'zero') { output += '0'; }
     else if (btnName == 'one') { output += '1'; }
     else if (btnName == 'two') { output += '2'; }

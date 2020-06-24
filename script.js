@@ -23,28 +23,43 @@ calculator.addEventListener('click',(e) => {
     let btnName = e.target.getAttribute('id') || e.target.parentElement.getAttribute('id')
 
     if (btnName == 'clear') { clearDisp(); }
-    else if (btnName == 'equals') { output = parsePlusSeparExpr(input); }
+    else if (btnName == 'equals') { 
+        input += output;
+        output = parsePlusSeparExpr(input); 
+    }
 
     // number buttons
-    else if (btnName == 'decimal') { input += '.'; }
-    if (btnName == 'zero') { input += '0'; }
-    if (btnName == 'one') { input += '1'; }
-    if (btnName == 'two') { input += '2'; }
-    if (btnName == 'three') { input += '3'; }
-    if (btnName == 'four') { input += '4'; }
-    if (btnName == 'five') { input += '5'; }
-    if (btnName == 'six') { input += '6'; }
-    if (btnName == 'seven') { input += '7'; }
-    if (btnName == 'eight') { input += '8'; }
-    if (btnName == 'nine') { input += '9'; }
-    // operator buttons
-    if (btnName == 'divide') { input += '/'; }
-    if (btnName == 'multiply') { input += '*'; }
-    if (btnName == 'add') { input += '+'; }
-    if (btnName == 'subtract') { input += '-'; }
+    else if (btnName == 'decimal') { output += '.'; }
+    else if (btnName == 'zero') { output += '0'; }
+    else if (btnName == 'one') { output += '1'; }
+    else if (btnName == 'two') { output += '2'; }
+    else if (btnName == 'three') { output += '3'; }
+    else if (btnName == 'four') { output += '4'; }
+    else if (btnName == 'five') { output += '5'; }
+    else if (btnName == 'six') { output += '6'; }
+    else if (btnName == 'seven') { output += '7'; }
+    else if (btnName == 'eight') { output += '8'; }
+    else if (btnName == 'nine') { output += '9'; }
     // brackets
-    if (btnName == 'open-bracket') { input += '('; }
-    if (btnName == 'close-bracket') { input += ')'; }
+    else if (btnName == 'open-bracket') { output += '('; }
+    else if (btnName == 'close-bracket') { output += ')'; }
+    // operator buttons
+    else if (btnName == 'divide') { 
+        input += output + '/'; 
+        output = '';
+    }
+    else if (btnName == 'multiply') { 
+        input += output + '*'; 
+        output = '';
+    }
+    else if (btnName == 'add') { 
+        input += output + '+'; 
+        output = '';
+    }
+    else if (btnName == 'subtract') { 
+        input += output + '-'; 
+        output = '';
+    }
 
     // console.log('btn ID is', btnName)
     updateDisp()

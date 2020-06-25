@@ -6,8 +6,8 @@
     width: 300px;
     height: 400px;
     display: grid;
-    grid-template-columns: repeat (4, 1fr);
-    padding: 1px;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 3px;
     background-color: black;
 }
 p {

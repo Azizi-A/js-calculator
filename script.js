@@ -2,7 +2,7 @@
 let input = '';
 let output = '';
 let answered = false;
-let decimanls = false;
+let decimals = false;
 const calculator = document.querySelector('#calculator')
 const displayOutput = document.querySelector('#display-output');
 const displayIntput = document.querySelector('#display-input')
@@ -13,6 +13,7 @@ const updateDisp = () => {
     displayOutput.textContent = output;
 }
 const clearDisp = () => {
+    decimals = false;
     input = '';
     output = '';
     updateDisp()
@@ -34,21 +35,22 @@ calculator.addEventListener('click',(e) => {
     // clear, delete and equals button functions
     if (btnName == 'clear') { clearDisp(); }
     else if (btnName == 'delete') {
-        if (/\W/.test(output[output.length -1])) { decimanls = false; }
+        if (/\W/.test(output[output.length -1])) { decimals = false; }
         output = output.slice(0,-1);
     }
     else if (btnName == 'equals') { 
         input += output;
         output = parsePlusSeparExpr(input);
         input += '=';
-        answered = true; 
+        answered = true;
+        decimals = false; 
     }
 
     // number buttons
     else if (btnName == 'decimal') {
-        if (!decimanls) {
+        if (!decimals) {
             output += '.';
-            decimanls = true;
+            decimals = true;
         }
     }
     else if (btnName == 'zero') { output += '0'; }
@@ -79,7 +81,7 @@ const pushOperator = (operator, output) => {
     if (/\W/.test(output[output.length -1])) {
         output = output.slice(0,-1)
     }
-    decimanls = false;
+    decimals = false;
     output += operator;
     return output;
 }

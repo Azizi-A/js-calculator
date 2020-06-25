@@ -30,8 +30,9 @@ calculator.addEventListener('click',(e) => {
     // find which button has been pressed
     let btnName = e.target.getAttribute('id') || e.target.parentElement.getAttribute('id')
 
-    // clear and equals button functions
+    // clear, delete and equals button functions
     if (btnName == 'clear') { clearDisp(); }
+    else if (btnName == 'delete') { output = output.slice(0,-1); }
     else if (btnName == 'equals') { 
         input += output;
         output = parsePlusSeparExpr(input);

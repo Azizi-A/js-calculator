@@ -1,6 +1,7 @@
 // Initalise variables
 let input = '';
 let output = '';
+let answered = false;
 let calculator = document.querySelector('#calculator')
 let displayOutput = document.querySelector('#display-output');
 let displayIntput = document.querySelector('#display-input')
@@ -19,13 +20,20 @@ updateDisp()
 
 /*-----Calculator display changes-----*/
 calculator.addEventListener('click',(e) => {
+    // clear previouse answer if there is one
+    if (answered) {
+        output = '';
+        answered = false;
+    }
+
     // find which button has been pressed
     let btnName = e.target.getAttribute('id') || e.target.parentElement.getAttribute('id')
 
     if (btnName == 'clear') { clearDisp(); }
     else if (btnName == 'equals') { 
         input += output;
-        output = parsePlusSeparExpr(input); 
+        output = parsePlusSeparExpr(input);
+        answered = true; 
     }
 
     // number buttons

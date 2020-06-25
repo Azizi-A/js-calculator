@@ -2,9 +2,10 @@
 let input = '';
 let output = '';
 let answered = false;
-let calculator = document.querySelector('#calculator')
-let displayOutput = document.querySelector('#display-output');
-let displayIntput = document.querySelector('#display-input')
+let decimanls = false;
+const calculator = document.querySelector('#calculator')
+const displayOutput = document.querySelector('#display-output');
+const displayIntput = document.querySelector('#display-input')
 
 // Initalise display
 const updateDisp = () => {
@@ -32,7 +33,10 @@ calculator.addEventListener('click',(e) => {
 
     // clear, delete and equals button functions
     if (btnName == 'clear') { clearDisp(); }
-    else if (btnName == 'delete') { output = output.slice(0,-1); }
+    else if (btnName == 'delete') {
+        if (/\W/.test(output[output.length -1])) { decimanls = false; }
+        output = output.slice(0,-1);
+    }
     else if (btnName == 'equals') { 
         input += output;
         output = parsePlusSeparExpr(input);
@@ -42,7 +46,10 @@ calculator.addEventListener('click',(e) => {
 
     // number buttons
     else if (btnName == 'decimal') {
-        if (!output.includes('.')) { output += '.'; }
+        if (!decimanls) {
+            output += '.';
+            decimanls = true;
+        }
     }
     else if (btnName == 'zero') { output += '0'; }
     else if (btnName == 'one') { output += '1'; }
@@ -58,14 +65,24 @@ calculator.addEventListener('click',(e) => {
     else if (btnName == 'open-bracket') { output += '('; }
     else if (btnName == 'close-bracket') { output += ')'; }
     // operator buttons
-    else if (btnName == 'divide') { output += '/'; }
-    else if (btnName == 'multiply') { output += '*'; }
-    else if (btnName == 'add') { output += '+'; }
-    else if (btnName == 'subtract') { output += '-'; }
+    else if (btnName == 'divide') { output = pushOperator('/', output ); }
+    else if (btnName == 'multiply') { output = pushOperator('*', output ); }
+    else if (btnName == 'add') { output = pushOperator('+', output ); }
+    else if (btnName == 'subtract') { output = pushOperator('-', output ); }
+
 
     // console.log('btn ID is', btnName)
     updateDisp()
 })
+// replace last operator symbols (non word characters \W) with latest pressed, if they are pressed one after another.
+const pushOperator = (operator, output) => {
+    if (/\W/.test(output[output.length -1])) {
+        output = output.slice(0,-1)
+    }
+    decimanls = false;
+    output += operator;
+    return output;
+}
 
 /*-----Calculator Logic-----*/
 // parse * / - +

@@ -22,6 +22,7 @@ updateDisp()
 calculator.addEventListener('click',(e) => {
     // clear previouse answer if there is one
     if (answered) {
+        input = output;
         output = '';
         answered = false;
     }
@@ -29,10 +30,12 @@ calculator.addEventListener('click',(e) => {
     // find which button has been pressed
     let btnName = e.target.getAttribute('id') || e.target.parentElement.getAttribute('id')
 
+    // clear and equals button functions
     if (btnName == 'clear') { clearDisp(); }
     else if (btnName == 'equals') { 
         input += output;
         output = parsePlusSeparExpr(input);
+        input += '=';
         answered = true; 
     }
 
@@ -54,22 +57,10 @@ calculator.addEventListener('click',(e) => {
     else if (btnName == 'open-bracket') { output += '('; }
     else if (btnName == 'close-bracket') { output += ')'; }
     // operator buttons
-    else if (btnName == 'divide') { 
-        input += output + '/'; 
-        output = '';
-    }
-    else if (btnName == 'multiply') { 
-        input += output + '*'; 
-        output = '';
-    }
-    else if (btnName == 'add') { 
-        input += output + '+'; 
-        output = '';
-    }
-    else if (btnName == 'subtract') { 
-        input += output + '-'; 
-        output = '';
-    }
+    else if (btnName == 'divide') { output += '/'; }
+    else if (btnName == 'multiply') { output += '*'; }
+    else if (btnName == 'add') { output += '+'; }
+    else if (btnName == 'subtract') { output += '-'; }
 
     // console.log('btn ID is', btnName)
     updateDisp()

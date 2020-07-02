@@ -35,7 +35,7 @@ calculator.addEventListener('click',(e) => {
     // clear, delete and equals button functions
     if (btnName == 'clear') { clearDisp(); }
     else if (btnName == 'delete') {
-        if (/\W/.test(output[output.length -1])) { decimals = false; }
+        if (/\/|\×|\-|\+/.test(output[output.length -1])) { decimals = false; }
         output = output.slice(0,-1);
     }
     else if (btnName == 'equals') { 
@@ -49,6 +49,7 @@ calculator.addEventListener('click',(e) => {
     // number buttons
     else if (btnName == 'decimal') {
         if (!decimals) {
+            if (/\W/.test(output[output.length -1])) { output += '0'; }
             output += '.';
             decimals = true;
         }

@@ -68,7 +68,7 @@ calculator.addEventListener('click',(e) => {
     else if (btnName == 'close-bracket') { output += ')'; }
     // operator buttons
     else if (btnName == 'divide') { output = pushOperator('/', output ); }
-    else if (btnName == 'multiply') { output = pushOperator('*', output ); }
+    else if (btnName == 'multiply') { output = pushOperator('×', output ); }
     else if (btnName == 'add') { output = pushOperator('+', output ); }
     else if (btnName == 'subtract') { output = pushOperator('-', output ); }
 
@@ -78,7 +78,7 @@ calculator.addEventListener('click',(e) => {
 })
 // replace last operator symbols and decimal with latest pressed, if they are pressed one after another.
 const pushOperator = (operator, output) => {
-    if (/\/|\*|\-|\+|\./.test(output[output.length -1])) {
+    if (/\/|\×|\-|\+|\./.test(output[output.length -1])) {
         output = output.slice(0,-1)
     }
     decimals = false;
@@ -114,7 +114,7 @@ const parseDivisionSeparExpr = (expression) => {
 // parse strings only of no.s and * opperation
 const parseMultiplicationSeparExpr = (expression) => {
     // convert string to array of no.s or pass back through functions for parts in brackets 
-    const arr = split(expression, '*').map((numStr) => {
+    const arr = split(expression, '×').map((numStr) => {
         return numStr[0] === '(' ? parsePlusSeparExpr(numStr.substr(1, numStr.length - 2)) : Number(numStr)
     });
     // multiply array

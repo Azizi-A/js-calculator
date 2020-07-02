@@ -76,9 +76,9 @@ calculator.addEventListener('click',(e) => {
     // console.log('btn ID is', btnName)
     updateDisp()
 })
-// replace last operator symbols (non word characters \W) with latest pressed, if they are pressed one after another.
+// replace last operator symbols and decimal with latest pressed, if they are pressed one after another.
 const pushOperator = (operator, output) => {
-    if (/\W/.test(output[output.length -1])) {
+    if (/\/|\*|\-|\+|\./.test(output[output.length -1])) {
         output = output.slice(0,-1)
     }
     decimals = false;

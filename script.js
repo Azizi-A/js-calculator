@@ -40,7 +40,9 @@ calculator.addEventListener('click',(e) => {
     }
     else if (btnName == 'equals') { 
         input += output;
-        output = parsePlusSeparExpr(input);
+        ans = parsePlusSeparExpr(input);
+        // round out any binary floating point errors
+        output = Math.round((ans + Number.EPSILON) * 1000000000) / 1000000000
         input += '=';
         answered = true;
         decimals = false; 

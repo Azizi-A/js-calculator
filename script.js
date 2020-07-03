@@ -140,7 +140,7 @@ const prepNegatives = (exp) => {
     // finds '-' that follow operators or brackets then places 0 and brackets 
     while (/[\(\/\×\-\+]\-/.test(exp)) {
         let i = exp.search(/[\(\/\×\-\+]\-/) + 1;
-        let j = exp.slice(i + 1).search(/[\/\×\-\+]|$/) + i + 1;
+        let j = exp.slice(i + 1).search(/[\(\/\×\-\+]|$/) + i + 1;
         exp = exp.slice(0, j) + ')' + exp.slice(j);
         exp = exp.slice(0, i) + '(0' + exp.slice(i);
     }

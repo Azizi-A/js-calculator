@@ -74,7 +74,14 @@ calculator.addEventListener('click',(e) => {
     else if (btnName == 'divide') { output = pushOperator('/', output ); }
     else if (btnName == 'multiply') { output = pushOperator('×', output ); }
     else if (btnName == 'add') { output = pushOperator('+', output ); }
-    else if (btnName == 'subtract') { output = pushOperator('-', output ); }
+    else if (btnName == 'subtract') {
+        // replace the previous operator symbol only if there are 2 or more, or it is a '-'
+        if (/[\/\×\-\+\.]{2,}$|\-$/.test(output)) {
+            output = pushOperator('-', output);
+        } else {
+            output += '-';
+        }
+    }
 
 
     // console.log('btn ID is', btnName)
@@ -82,8 +89,8 @@ calculator.addEventListener('click',(e) => {
 })
 // replace last operator symbols and decimal with latest pressed, if they are pressed one after another.
 const pushOperator = (operator, output) => {
-    if (/[\/\×\-\+\.]$/.test(output)) {
-        output = output.slice(0,-1)
+    if (/[\/\×\-\+\.]+$/.test(output)) {
+        output = output.replace(/[\/\×\-\+\.]+$/, '')
     }
     decimals = false;
     output += operator;
@@ -93,6 +100,7 @@ const pushOperator = (operator, output) => {
 /*-----Calculator Logic-----*/
 // parse * / - +
 const parsePlusSeparExpr = (expression) => {
+    expression = prepNegatives(expression)
     // convert string to array of no.s
     const arr = split(expression, '+').map(parseMinusSeparExpr);
     // sum array
@@ -124,6 +132,27 @@ const parseMultiplicationSeparExpr = (expression) => {
     // multiply array
     const result = arr.reduce((tot, no) => tot * no);
     return result;
+}
+
+// change string so that negative numbers are corectly parsed
+// by placing a '0' in front and brackets round them.
+const prepNegatives = (exp) => {
+    // finds '-' that follow operators or brackets then places 0 and brackets 
+    while (/[\(\/\×\-\+]\-/.test(exp)) {
+        let i = exp.search(/[\(\/\×\-\+]\-/) + 1;
+        let j = exp.slice(i + 1).search(/[\/\×\-\+]|$/) + i + 1;
+        exp = exp.slice(0, j) + ')' + exp.slice(j);
+        exp = exp.slice(0, i) + '(0' + exp.slice(i);
+    }
+    // does the same if the expression starts with '-'
+    if (exp[0] === '-') {
+        let j = exp.slice(1).search(/[\/\×\-\+]|$/) + 1;
+        exp = exp.slice(0, j) + ')' + exp.slice(j);
+        exp = '(0' + exp;
+    }
+
+    console.log(exp);
+    return exp;
 }
 
 // split expression by opperator but don't split in parentheses

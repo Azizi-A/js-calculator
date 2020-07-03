@@ -35,7 +35,7 @@ calculator.addEventListener('click',(e) => {
     // clear, delete and equals button functions
     if (btnName == 'clear') { clearDisp(); }
     else if (btnName == 'delete') {
-        if (/\/|\×|\-|\+/.test(output[output.length -1])) { decimals = false; }
+        if (/[\/\×\-\+\.]$/.test(output)) { decimals = false; }
         output = output.slice(0,-1);
     }
     else if (btnName == 'equals') { 
@@ -51,7 +51,8 @@ calculator.addEventListener('click',(e) => {
     // number buttons
     else if (btnName == 'decimal') {
         if (!decimals) {
-            if (/\W/.test(output[output.length -1])) { output += '0'; }
+            // input '0' before decimal if it is pressed at start of a number
+            if (/[\/\×\-\+\(\)]$/.test(output) || output.length === 0) { output += '0'; }
             output += '.';
             decimals = true;
         }
@@ -81,7 +82,7 @@ calculator.addEventListener('click',(e) => {
 })
 // replace last operator symbols and decimal with latest pressed, if they are pressed one after another.
 const pushOperator = (operator, output) => {
-    if (/\/|\×|\-|\+|\./.test(output[output.length -1])) {
+    if (/[\/\×\-\+\.]$/.test(output)) {
         output = output.slice(0,-1)
     }
     decimals = false;

@@ -1,7 +1,7 @@
 // Initalise variables
 let input = '';
-let output = '';
-let answered = false;
+let output = '0';
+let answered = true;
 let decimals = false;
 const calculator = document.querySelector('#calculator')
 const displayOutput = document.querySelector('#display-output');
@@ -15,7 +15,8 @@ const updateDisp = () => {
 const clearDisp = () => {
     decimals = false;
     input = '';
-    output = '';
+    output = '0';
+    answered = true;
     updateDisp()
 }
 updateDisp()

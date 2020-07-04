@@ -56,6 +56,7 @@ p {
     background-color: dodgerblue;
 }
 #equals:hover {
+    color: #ccc;
     background-color: blue;
 }
 .number {
@@ -69,6 +70,7 @@ p {
     background-color: lightslategrey;
 }
 .math-oprator:hover {
+    color: #ccc;
     background-color: slategrey;
 }
 #multiply {

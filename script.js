@@ -47,7 +47,7 @@ calculator.addEventListener('click',(e) => {
         input += output;
         ans = parsePlusSeparExpr(input);
         // round out any binary floating point errors
-        output = Math.round((ans + Number.EPSILON) * 1000000000) / 1000000000
+        output = Math.round((ans + Number.EPSILON) * 10000000000) / 10000000000
         input += '=';
         answered = true;
         decimals = false; 

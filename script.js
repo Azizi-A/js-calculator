@@ -5,14 +5,14 @@ let answered = true;
 let decimals = false;
 const calculator = document.querySelector('#calculator')
 const displayOutput = document.querySelector('#display-output');
-const displayIntput = document.querySelector('#display-input')
+const displayInput = document.querySelector('#display-input')
 
 // Initialise display
 const updateDisp = () => {
     // remove leading '0's, except decimals
     if (/^0/.test(output) && !/^0\./.test(output)) { output = output.slice(1)}
     if (output === '') { output = '0'}
-    displayIntput.textContent = input;
+    displayInput.textContent = input;
     displayOutput.textContent = output;
 }
 const clearDisp = () => {

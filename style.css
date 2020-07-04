@@ -31,27 +31,45 @@ p {
 }
 
 .button {
+    color: #333;
     border: 1px solid black;
 }
 .button:hover {
-    border: 1px solid white;
-    color: white;
+    color: #ccc;
+    border: 1px solid #ddd;
 }
 
 #clear {
     background-color: orangered;
 }
+#clear:hover {
+    background-color: red;
+}
 #delete {
     background-color: orange;
 }
+#delete:hover {
+    background-color: darkorange;
+}
 #equals {
+    color: #ee4;
     background-color: dodgerblue;
+}
+#equals:hover {
+    background-color: blue;
 }
 .number {
     background-color: darkgray;
 }
-.math-oprator{ 
+.number:hover{
+    color: #eee;
+}
+.math-oprator{
+    color: #ee4;
     background-color: lightslategrey;
+}
+.math-oprator:hover {
+    background-color: slategrey;
 }
 #multiply {
     grid-row: 3;
@@ -66,6 +84,7 @@ p {
     grid-column: 4;
 }
 .bracket {
+    color: black;
     background-color: rgb(122, 131, 139);
 }
 

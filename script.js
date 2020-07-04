@@ -1,6 +1,6 @@
 // Initalise variables
 let input = '';
-let output = '0';
+let output = '';
 let answered = true;
 let decimals = false;
 const calculator = document.querySelector('#calculator')
@@ -9,13 +9,16 @@ const displayIntput = document.querySelector('#display-input')
 
 // Initalise display
 const updateDisp = () => {
+    // remove leading '0's, except decimals
+    if (/^0/.test(output) && !/^0\./.test(output)) { output = output.slice(1)}
+    if (output === '') { output = '0'}
     displayIntput.textContent = input;
     displayOutput.textContent = output;
 }
 const clearDisp = () => {
     decimals = false;
     input = '';
-    output = '0';
+    output = '';
     answered = true;
     updateDisp()
 }
@@ -63,7 +66,12 @@ calculator.addEventListener('click',(e) => {
             decimals = true;
         }
     }
-    else if (btnName == 'zero') { output += '0'; }
+    else if (btnName == 'zero') {
+        // add a '0' only if the number contains non '0' (1-9) digits
+        if (/[1-9]+0*$|[\/\×\-\+\(]$/.test(output)) {
+            output += '0';
+        }
+    }
     else if (btnName == 'one') { output += '1'; }
     else if (btnName == 'two') { output += '2'; }
     else if (btnName == 'three') { output += '3'; }

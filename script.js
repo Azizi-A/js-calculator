@@ -85,6 +85,7 @@ calculator.addEventListener('click',(e) => {
             output = pushOperator('-', output);
         } else {
             output += '-';
+            decimals = false;
         }
     }
 

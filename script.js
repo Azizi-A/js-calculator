@@ -1,4 +1,4 @@
-// Initalise variables
+// Initialise variables
 let input = '';
 let output = '';
 let answered = true;
@@ -7,7 +7,7 @@ const calculator = document.querySelector('#calculator')
 const displayOutput = document.querySelector('#display-output');
 const displayIntput = document.querySelector('#display-input')
 
-// Initalise display
+// Initialise display
 const updateDisp = () => {
     // remove leading '0's, except decimals
     if (/^0/.test(output) && !/^0\./.test(output)) { output = output.slice(1)}
@@ -30,7 +30,7 @@ calculator.addEventListener('click',(e) => {
     // find which button has been pressed
     let btnName = e.target.getAttribute('id') || e.target.parentElement.getAttribute('id')
 
-    // clear previouse answer if there is one
+    // clear previous answer if there is one
     if (answered) {
         if (/divide|multiply|add|subtract/.test(btnName)) {
             input = output;
@@ -137,7 +137,7 @@ const parseDivisionSeparExpr = (expression) => {
     const result = arr.reduce((tot, no) => tot / no);
     return result;
 }
-// parse strings only of no.s and * opperation
+// parse strings only of no.s and * operation
 const parseMultiplicationSeparExpr = (expression) => {
     // convert string to array of no.s or pass back through functions for parts in brackets 
     const arr = split(expression, '×').map((numStr) => {
@@ -148,7 +148,7 @@ const parseMultiplicationSeparExpr = (expression) => {
     return result;
 }
 
-// change string so that negative numbers are corectly parsed
+// change string so that negative numbers are correctly parsed
 // by placing a '0' in front and brackets round them.
 const prepNegatives = (exp) => {
     // finds '-' that follow operators or brackets then places 0 and brackets 
@@ -166,7 +166,7 @@ const prepNegatives = (exp) => {
     }
     return exp;
 }
-// split expression by opperator but don't split in parentheses
+// split expression by operator but don't split in parentheses
 const split = (expression, operator) => {
     const result = [];
     let braces = 0;

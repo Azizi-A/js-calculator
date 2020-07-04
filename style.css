@@ -65,11 +65,11 @@ p {
 .number:hover{
     color: #eee;
 }
-.math-oprator{
+.math-operator{
     color: #ee4;
     background-color: lightslategrey;
 }
-.math-oprator:hover {
+.math-operator:hover {
     color: #ccc;
     background-color: slategrey;
 }

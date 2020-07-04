@@ -16,16 +16,17 @@ p {
 }
 
 #display {
-    height: 67px;
     grid-column: 1/5;
     grid-row: 1;
     background-color: black;
-    border: 1px solid black;
 }
 #display h2, h3 {
     text-align: right;
     color: white;
-    padding-right: 1em;
+    margin: 0;
+    position: relative;
+    height: 1em;
+    padding: 0.7rem 1em 0em 1em;
     font-family: monospace;
 }
 

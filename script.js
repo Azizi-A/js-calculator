@@ -22,15 +22,20 @@ updateDisp()
 
 /*-----Calculator display changes-----*/
 calculator.addEventListener('click',(e) => {
-    // clear previouse answer if there is one
-    if (answered) {
-        input = output;
-        output = '';
-        answered = false;
-    }
 
     // find which button has been pressed
     let btnName = e.target.getAttribute('id') || e.target.parentElement.getAttribute('id')
+
+    // clear previouse answer if there is one
+    if (answered) {
+        if (/divide|multiply|add|subtract/.test(btnName)) {
+            input = output;
+        } else {
+            input = '';
+        }
+        output = '';
+        answered = false;
+    }
 
     // clear, delete and equals button functions
     if (btnName == 'clear') { clearDisp(); }
@@ -82,7 +87,6 @@ calculator.addEventListener('click',(e) => {
             output += '-';
         }
     }
-
 
     // console.log('btn ID is', btnName)
     updateDisp()
@@ -150,11 +154,8 @@ const prepNegatives = (exp) => {
         exp = exp.slice(0, j) + ')' + exp.slice(j);
         exp = '(0' + exp;
     }
-
-    console.log(exp);
     return exp;
 }
-
 // split expression by opperator but don't split in parentheses
 const split = (expression, operator) => {
     const result = [];

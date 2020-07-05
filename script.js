@@ -67,8 +67,8 @@ calculator.addEventListener('click',(e) => {
         }
     }
     else if (btnName == 'zero') {
-        // add a '0' only if the number contains non '0' (1-9) digits
-        if (/[1-9]+0*$|[\/\×\-\+\(]$/.test(output)) {
+        // add a '0' only if the number contains non '0' digits (1-9) or a decimal point
+        if (/[1-9\.]+0*$|[\/\×\-\+\(]$/.test(output)) {
             output += '0';
         }
     }

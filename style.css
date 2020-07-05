@@ -33,6 +33,7 @@ p {
 .button {
     color: #333;
     border: 1px solid black;
+    outline: none;
 }
 .button:hover {
     color: white;

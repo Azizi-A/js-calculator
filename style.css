@@ -41,9 +41,7 @@ p {
 }
 .button:active {
     border: 1px solid white;
-}
-.button:focus {
-    color: white;
+    transform: translateY(1px);
 }
 
 #clear {

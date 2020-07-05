@@ -35,8 +35,14 @@ p {
     border: 1px solid black;
 }
 .button:hover {
-    color: #ccc;
+    color: white;
     border: 1px solid #ddd;
+}
+.button:active {
+    border: 1px solid white;
+}
+.button:focus {
+    color: white;
 }
 
 #clear {
@@ -56,21 +62,18 @@ p {
     background-color: dodgerblue;
 }
 #equals:hover {
-    color: #ccc;
+    color: white;
     background-color: blue;
 }
 .number {
     background-color: darkgray;
-}
-.number:hover{
-    color: #eee;
 }
 .math-operator{
     color: #ee4;
     background-color: lightslategrey;
 }
 .math-operator:hover {
-    color: #ccc;
+    color: white;
     background-color: slategrey;
 }
 #multiply {
